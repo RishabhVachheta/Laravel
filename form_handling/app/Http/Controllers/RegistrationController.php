@@ -19,9 +19,12 @@ class RegistrationController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
                 'password_confirmation' => 'required|same:password',
+                'country' => 'required',
+                'state' => 'required',
+                'address' => 'required',
+                'gender' => 'required|in:M,F,O',
+                'dob' => 'required',
             ]
         );
-        echo "<pre>";
-        print_r($request->all());
     }
 }
