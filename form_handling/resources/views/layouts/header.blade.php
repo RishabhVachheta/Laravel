@@ -12,7 +12,13 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">Navbar</a>
+            <a class="navbar-brand" href="/">
+                @if (session()->has('name'))
+                {{session()->get('name')}}
+                @else
+                Guest
+                @endif
+            </a>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item">

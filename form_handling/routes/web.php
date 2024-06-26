@@ -4,6 +4,7 @@ use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Customer;
+use Illuminate\Http\Request;
 
 Route::get("/", function () {
     return view("layouts/main");
@@ -31,3 +32,21 @@ Route::post("/customer", [CustomerController::class, "store"]);
 //     echo "<pre>";
 //     print_r($customer->toArray());
 // });
+
+Route::get('get-all-session', function () {
+    $session = session()->all();
+    p($session);
+});
+
+Route::get('set-session', function (Request $request) {
+    $request->session()->put('name', 'WscubeTech');
+    $request->session()->put('id', '123');
+    session()->flash('status', 'Success');
+    return redirect('get-all-session');
+});
+
+Route::get('destroy-session', function () {
+    session()->forget('name');
+    session()->forget('id');
+    return redirect('get-all-session');
+});

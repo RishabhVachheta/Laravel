@@ -40,24 +40,28 @@
                         Other
                         @endif
                     </td>
-                    <td>{{$data->dob}}</td>
+                    <td>{{($data->dob)}}</td>
                     <td>{{$data->state}}</td>
                     <td>{{$data->country}}</td>
                     <td>{{$data->address}}</td>
                     <td>
                         @if($data->status == '1')
                         <a href="">
-                            <span class="text-success">Active</span>
+                            <span class="badge text-bg-success">Active</span>
                         </a>
                         @else
                         <a href="">
-                            <span class="text-danger">Inactive</span>
+                            <span class="badge text-bg-danger">Inactive</span>
                         </a>
                         @endif
                     </td>
                     <td>
-                        <a href="{{url('/customer/view/delete')}}/{{$data->customer_id}}"><button class="btn btn-danger">Delete</button></a>
-                        <a href="{{url('/customer/view/edit')}}/{{$data->customer_id}}"><button class="btn btn-primary">Edit</button></a>
+                        <a href="{{url('/customer/view/delete')}}/{{$data->customer_id}}" onclick="return confirm('Are you sure?')">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                        <a href="{{url('/customer/view/edit')}}/{{$data->customer_id}}">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
                     </td>
 
                 </tr>
